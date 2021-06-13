@@ -3,18 +3,22 @@
 **/
 
 let { model, Schema } = require('mongoose');
-let SampleSchema = new Schema({
+let UserSchema = new Schema({
     id: {
         type: Number,
         required: true,
         default: 0,
     },
-    compound_index_a: {
+    email: {
         type: String,
         required: true,
     },
-    compound_index_b: {
+    fb_id: {
         type: Number,
+        required: true,
+    },
+    name: {
+        type: String,
         required: true,
     },
     //
@@ -45,4 +49,4 @@ let SampleSchema = new Schema({
     },
 });
 
-model('Sample', SampleSchema);
+model('User', UserSchema);

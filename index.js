@@ -1,15 +1,12 @@
 /**
  * @author Oguntuberu Nathan O. <nateoguns.work@gmail.com>
 **/
+const { APP_PORT } = require('./src/_env');
 
 /** environment config */
-require('dotenv').config();
 let { loadEventSystem } = require('./src/events/_loader');
 let { connect, loadModels } = require('./src/models/_config');
 
-const {
-    APP_PORT
-} = process.env;
 
 /** Database Conneciton Setup */
 connect();

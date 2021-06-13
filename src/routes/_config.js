@@ -11,11 +11,11 @@ let {
 } = require('../middlewares/http');
 
 /** Route Handlers */
-let sample_route_handler = require('./sample');
+let user_route_handler = require('./user');
 
 /** Cross Origin Handling */
 router.use(setupRequest);
-router.use('/samples', sample_route_handler);
+router.use('/users', user_route_handler);
 router.use(processResponse);
 
 /** Static Routes */
