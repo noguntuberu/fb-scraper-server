@@ -1,7 +1,7 @@
 /**
  * @author Oguntuberu Nathan O. <nateoguns.work@gmail.com>
 **/
-const { APP_PORT } = require('./src/_env');
+const { PORT } = require('./src/_env');
 
 /** environment config */
 let { loadEventSystem } = require('./src/events/_loader');
@@ -38,5 +38,5 @@ app.use('/', route_handler);
 
 /** */
 app.listen(APP_PORT, () => {
-    console.log(`Server started on port ${APP_PORT}`);
+    console.log(`Server started on port ${PORT}`);
 });
