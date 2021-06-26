@@ -43,5 +43,8 @@
   "bugs": {
     "url": "https://github.com/noguntuberu/node-template/issues"
   },
-  "homepage": "https://github.com/noguntuberu/node-template#readme"
+  "homepage": "https://github.com/noguntuberu/node-template#readme",
+  "engines": {
+    "node": "14.x"
+  }
 }
