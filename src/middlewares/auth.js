@@ -14,8 +14,8 @@ module.exports = {
             const [ , token] = authorization.split(' ');
             if (!token) throw new Error('Unauthorized.');
 
-            const userData = await decodeAuthenticationToken(token);
-            request.userData = userData;
+            const user_data = await decodeAuthenticationToken(token);
+            request.user_data = user_data;
             next();
         } catch (e) {
             logger.error(e.message);

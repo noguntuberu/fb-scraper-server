@@ -5,7 +5,7 @@
 const router = require('express').Router();
 const Controller = require('../controllers/index');
 const userSchemaValitor = require('../validators/user');
-
+const { authenticateUser } = require('../middlewares/auth');
 const userController = new Controller('User');
 const UserService = require('../services/user/user');
 const userService = new UserService(userController, userSchemaValitor);
@@ -16,31 +16,39 @@ try {
         request.payload = await userService.login(request, next);
         next();
     })
-    .get('/', async (request, __, next) => {
+    .get('/', authenticateUser, async (request, __, next) => {
         request.payload = await userService.readRecordsByFilter(request, next);
         next();
     })
-    .get('/:id', async (request, __, next) => {
+    .get('/:id',authenticateUser, async (request, __, next) => {
         request.payload = await userService.readRecordById(request, next);
         next();
     })
-    .get('/search/:keys/:keyword', async (request, __, next) => {
+    .get('/:id/friends',authenticateUser, async (request, __, next) => {
+        request.payload = await userService.fetchFriends(request, next);
+        next();
+    })
+    .get('/:id/groups',authenticateUser, async (request, __, next) => {
+        request.payload = await userService.fetchGroups(request, next);
+        next();
+    })
+    .get('/search/:keys/:keyword',authenticateUser, async (request, __, next) => {
         request.payload = await userService.readRecordsByWildcard(request, next);
         next();
     })
-    .put('/:id', async (request, __, next) => {
+    .put('/:id',authenticateUser, async (request, __, next) => {
         request.payload = await userService.updateRecordById(request, next);
         next();
     })
-    .put('/', async (request, __, next) => {
+    .put('/',authenticateUser, async (request, __, next) => {
         request.payload = await userService.updateRecords(request, next);
         next();
     })
-    .delete('/:id', async (request, __, next) => {
+    .delete('/:id',authenticateUser, async (request, __, next) => {
         request.payload = await userService.deleteRecordById(request, next);
         next();
     })
-    .delete('/', async (request, __, next) => {
+    .delete('/',authenticateUser, async (request, __, next) => {
         request.payload = await userService.deleteRecords(request, next);
         next();
     })

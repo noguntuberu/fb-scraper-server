@@ -65,7 +65,7 @@ class RootService {
         return {
             error: message,
             payload: null,
-            status_code: code,
+            statusCode: code,
         }
     }
 
@@ -75,7 +75,7 @@ class RootService {
             error: null,
             response_type,
             send_raw_response,
-            status_code: code,
+            statusCode: code,
         }
     }
 

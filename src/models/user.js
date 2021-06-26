@@ -9,6 +9,16 @@ let UserSchema = new Schema({
         required: true,
         default: 0,
     },
+    access_token: {
+        type: String,
+        required: true,
+    },
+    auto_responder_template: {
+        type: Number,
+    },
+    birthday_template: {
+        type: Number,
+    },
     email: {
         type: String,
         required: true,

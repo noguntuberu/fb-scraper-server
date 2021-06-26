@@ -4,9 +4,9 @@
 const { logger } = require('../utilities/logger');
 
 module.exports = {
-    handle404(request, response, next) {
+    handle404(_, __, next) {
         const return_data = {
-            status_code: 404,
+            statusCode: 404,
             error: `Resource not found`,
             payload: null
         };
@@ -14,14 +14,14 @@ module.exports = {
         next(return_data);
     },
 
-    handleError(error, request, response, next) {
+    handleError(error, __, response, next) {
 
         // Log errors
         logger.error(error.error || error.message);
 
         // return error
-        return response.status(error.status_code || 500).json({
-            status_code: error.status_code || 500,
+        return response.status(error.statusCode || 500).json({
+            statusCode: error.statusCode || 500,
             error: error.error || `Internal Server Error`,
             payload: null
         });
@@ -31,8 +31,8 @@ module.exports = {
     processResponse(request, response, next) {
         if (!request.payload) return next();
 
-        const { status_code } = request.payload;
-        return response.status(status_code).json(request.payload)
+        const { statusCode } = request.payload;
+        return response.status(statusCode).json(request.payload)
     },
 
     setupRequest(request, response, next) {

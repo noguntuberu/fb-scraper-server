@@ -23,7 +23,7 @@ let TemplateSchema = new Schema({
     },
     type: {
         type: String,
-        enum: ["birthday","autoresponder"],
+        enum: ["birthday","auto-responder"],
         required: true,
     },
     //

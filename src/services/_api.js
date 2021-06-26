@@ -21,8 +21,21 @@ module.exports = {
         return (await axios.get(uri)).data;
     },
 
-    fetchGroups: async (userId, accessToken) => {
-        let uri = `${FB_GRAPH_URI}/${userId}/groups?access_token=${accessToken}`;
+    fetchFriends: async (userId, accessToken, limit = 100) => {
+        let uri = `${FB_GRAPH_URI}/${userId}/friends?access_token=${accessToken}&limit=${limit}`;
+        uri += `&fields=id,birthday,name`;
+        const result = await axios.get(uri);
+        return result.data;
+    },
+
+    fetchGroups: async (userId, accessToken, limit = 100) => {
+        let uri = `${FB_GRAPH_URI}/${userId}/groups?access_token=${accessToken}&limit=${limit}`;
+        return (await axios.get(uri)).data;
+    },
+
+    fetchGroupPosts: async (groupId, accessToken, limit = 0) => {
+        let uri = `${FB_GRAPH_URI}/${groupId}/feed?access_token=${accessToken}&limit=${limit}`;
+        uri += `&fields=reactions{},comments{},from,message`;
         return (await axios.get(uri)).data;
     },
 
