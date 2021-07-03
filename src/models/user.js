@@ -31,6 +31,10 @@ let UserSchema = new Schema({
         type: String,
         required: true,
     },
+    selected_email: {
+        type: String,
+        required: true,
+    },
     //
     is_active: {
         type: Boolean,

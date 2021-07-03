@@ -80,6 +80,21 @@ class UserService extends RootService {
             next(err);
         }
     }
+
+    async updateRecordById(request, next) {
+        try {
+            const { id } = request.params;
+            const data = request.body;
+
+            if (!id) return next(this.processFailedResponse(`Invalid ID supplied.`));
+
+            const result = await this.template_controller.updateRecords({ id }, { ...data });
+            return this.processUpdateResult(result);
+        } catch (e) {
+            const err = this.processFailedResponse(`[SampleService] update_record_by_id: ${e.message}`, 500);
+            next(err);
+        }
+    }
 }
 
 module.exports = UserService;
