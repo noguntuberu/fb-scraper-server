@@ -88,7 +88,7 @@ class UserService extends RootService {
 
             if (!id) return next(this.processFailedResponse(`Invalid ID supplied.`));
 
-            const result = await this.template_controller.updateRecords({ id }, { ...data });
+            const result = await this.user_controller.updateRecords({ id }, { ...data });
             return this.processUpdateResult(result);
         } catch (e) {
             const err = this.processFailedResponse(`[SampleService] update_record_by_id: ${e.message}`, 500);
