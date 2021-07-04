@@ -16,6 +16,10 @@ try {
         request.payload = await userService.login(request, next);
         next();
     })
+    .post('/:id/send/post',authenticateUser, async (request, __, next) => {
+        request.payload = await userService.sendPost(request, next);
+        next();
+    })
     .get('/', authenticateUser, async (request, __, next) => {
         request.payload = await userService.readRecordsByFilter(request, next);
         next();

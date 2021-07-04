@@ -13,10 +13,11 @@ class Controller {
         let record_to_mutate = { ...record };
 
         //
+        delete record_to_mutate._id;
+        delete record_to_mutate._v;
         delete record_to_mutate.timestamp;
         delete record_to_mutate.created_on;
         delete record_to_mutate.updated_on;
-        delete record_to_mutate._v;
 
         //
         return { ...record_to_mutate };

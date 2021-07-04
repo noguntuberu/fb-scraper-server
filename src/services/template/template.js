@@ -24,8 +24,9 @@ class SampleService extends RootService {
 
     async createRecord(request, next) {
         try {
-            const { body } = request;
-            const { owner, make_default, type } = body;
+            const { body, user_data } = request;
+            const { make_default, type } = body;
+            const { fb_id: owner } = user_data;
 
             const result = await this.template_controller.createRecord({ ...body });
             if (result && result._id && make_default) {
@@ -60,8 +61,9 @@ class SampleService extends RootService {
     async readRecordsByFilter(request, next) {
         try {
             const { query } = request;
+            const { fb_id: owner } = request.user_data;
 
-            const result = await this.handleDatabaseRead(this.template_controller, query);
+            const result = await this.handleDatabaseRead(this.template_controller, { ...query }, { owner });
             return this.processMultipleReadResults(result);
         } catch (e) {
             const err = this.processFailedResponse(`[SampleService] read_records_by_filter: ${e.message}`, 500);
@@ -72,13 +74,14 @@ class SampleService extends RootService {
     async readRecordsByWildcard(request, next) {
         try {
             const { params, query } = request;
+            const { fb_id: owner } = request.user_data;
 
             if (!params.keys || !params.keys) {
                 return next(this.processFailedResponse(`Invalid key/keyword`, 400));
             }
 
             const wildcard_conditions = buildWildcardOptions(params.keys, params.keyword);
-            const result = await this.handleDatabaseRead(this.template_controller, query, wildcard_conditions);
+            const result = await this.handleDatabaseRead(this.template_controller, { ...query, owner }, wildcard_conditions);
             return this.processMultipleReadResults(result);
         } catch (e) {
             const err = this.processFailedResponse(`[SampleService] read_records_by_wildcard: ${e.message}`, 500);

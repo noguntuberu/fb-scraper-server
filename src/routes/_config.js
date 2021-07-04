@@ -23,7 +23,7 @@ let webhook_route_handler = require('./webhook');
 /** Cross Origin Handling */
 router.use(setupRequest);
 router.use('/groups', authenticateUser, group_route_handler);
-router.use('/templates', template_route_handler);
+router.use('/templates',authenticateUser, template_route_handler);
 router.use('/users', user_route_handler);
 router.use('/webhooks', webhook_route_handler);
 router.use(processResponse);
