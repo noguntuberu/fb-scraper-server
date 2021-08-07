@@ -9,7 +9,11 @@ let UserSchema = new Schema({
         required: true,
         default: 0,
     },
-    access_token: {
+    scraper_access_token: {
+        type: String,
+        required: true,
+    },
+    user_access_token: {
         type: String,
         required: true,
     },
@@ -33,7 +37,6 @@ let UserSchema = new Schema({
     },
     selected_email: {
         type: String,
-        required: true,
     },
     //
     is_active: {

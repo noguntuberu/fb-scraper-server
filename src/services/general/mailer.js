@@ -45,6 +45,6 @@ module.exports = {
         const transport = configure_mail_transport();
         const message_config = configure_message(recipient, data);
         const { messageId } = await transport.sendMail(message_config);
-        return !!messageId;
+        return messageId;
     },
 }

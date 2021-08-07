@@ -14,7 +14,7 @@ class GroupService extends RootService {
         try {
             const { user_data } = request;
             const {id: groupId } = request.params;
-            const posts = (await _api.fetchGroupPosts(groupId, user_data.access_token, 100));
+            const posts = (await _api.fetchGroupPosts(groupId, user_data.scraper_access_token, 100));
             return this.processSuccessfulResponse(posts || []);
         } catch (e) {
             const err = this.processFailedResponse(`[GroupService Error] fetchPosts: ${e.message}`);
