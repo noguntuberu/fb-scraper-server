@@ -24,9 +24,9 @@ const config = {
         APP_PORT: 4000,
         FB_GRAPH_URI: `https://graph.facebook.com`,
         SCRAPER_APP_ID: 159432622819982,
-        SCRAPER_REDIRECT_URI: `https://youthful-morse-692f0a.netlify.app/`,
+        SCRAPER_FB_REDIRECT_URI: `https://youthful-morse-692f0a.netlify.app/`,
         USER_APP_ID: 1145245169639706,
-        USER_REDIRECT_URI: `https://youthful-morse-692f0a.netlify.app/settings`,
+        USER_FB_REDIRECT_URI: `https://youthful-morse-692f0a.netlify.app/settings`,
     },
 }
 
