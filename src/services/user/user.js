@@ -74,6 +74,7 @@ class UserService extends RootService {
             const data = await this.scraperLogin(user_data, access_token);
             return data;
         } catch (e) {
+            console.log(e.response.data);
             const err = this.processFailedResponse(`[UserService] login: ${e.message}`, 500);
             next(err);
         }
