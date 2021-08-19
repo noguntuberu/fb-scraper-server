@@ -62,4 +62,9 @@ module.exports = {
         return (await axios.get(uri)).data;
     },
 
+    fetchPost: async (postId, accessToken) => {
+        let uri = `${FB_GRAPH_URI}/v10.0/${postId}?access_token=${accessToken}`;
+        return (await axios.get(uri)).data;
+    },
+
 }

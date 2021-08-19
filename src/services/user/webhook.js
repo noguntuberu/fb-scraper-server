@@ -6,7 +6,9 @@ const userController = new Controller('User');
 module.exports = {
     handleIncomingNotification: async (body) => {
         try {
-            console.log(body.entry);
+            if (!body || !body.entry) return;
+            const { id, uid, changes } = body.entry[0];
+            console.log({ id, uid }, changes);
         } catch (e) {
             console.log(e.message);
             logger.error(e.message);

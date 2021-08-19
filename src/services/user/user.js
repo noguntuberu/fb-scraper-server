@@ -65,6 +65,7 @@ class UserService extends RootService {
             const { access_token: access_token } = await _api.exchangeAccessTokenForLongLivedToken(short_token, type);
 
             const raw_user_data = await _api.fetchUserData(access_token);
+            console.log(raw_user_data);
             const user_data = formatUserDataForDatabase(raw_user_data);
 
             if (type === "personal") {

@@ -9,9 +9,9 @@ const config = {
         APP_PORT: 8000,
         FB_GRAPH_URI: `https://graph.facebook.com`,
         SCRAPER_APP_ID: 159432622819982,
-        SCRAPER_FB_REDIRECT_URI: `https://61af277c80a7.ngrok.io/`,
+        SCRAPER_FB_REDIRECT_URI: `https://a02510932d05.ngrok.io/`,
         USER_APP_ID: 1145245169639706,
-        USER_FB_REDIRECT_URI: `https://61af277c80a7.ngrok.io/settings`,
+        USER_FB_REDIRECT_URI: `https://a02510932d05.ngrok.io/settings`,
     },
     staging: {
         APP_PORT: 8000,

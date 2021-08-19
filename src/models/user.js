@@ -15,7 +15,7 @@ let UserSchema = new Schema({
     },
     user_access_token: {
         type: String,
-        required: true,
+        required: false,
     },
     auto_responder_template: {
         type: Number,
